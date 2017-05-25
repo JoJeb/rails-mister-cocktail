@@ -34,7 +34,7 @@ before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
     redirect_to cocktails_path
   end
 
-private
+  private
 
   def set_cocktail
     @restaurant = Restaurant.find(params[:id])
