@@ -1,0 +1,8 @@
+<div>
+  <h1><%= @cocktail.name %></h1>
+  <p class="edit"><%= link_to 'edit', edit_cocktail_path(@cocktail) %></p>
+  <p class="delete"><%= link_to 'delete', cocktail_path(@cocktail), method: :delete %></p>
+  <p><%= @cocktail.name %></p>
+</div>
+
+<h2><%= link_to 'Back to all Cocktails', cocktails_path %></h2>
