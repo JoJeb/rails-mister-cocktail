@@ -1,8 +1,32 @@
-<div>
-  <h1><%= @cocktail.name %></h1>
-  <p class="edit"><%= link_to 'edit', edit_cocktail_path(@cocktail) %></p>
-  <p class="delete"><%= link_to 'delete', cocktail_path(@cocktail), method: :delete %></p>
-  <p><%= @cocktail.name %></p>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <h1><%= @cocktail.name %></h1>
+      <%= link_to 'Back', cocktails_path %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8">
+      <ul>
+        <% if @cocktail.doses.empty? %>
+          <li>No recipe for this Cocktail</li>
+        <% else %>
+          <% @cocktail.doses.each do |dose| %>
+            <li><%= dose.description %> of <%= dose.ingredient.name %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
 
-<h2><%= link_to 'Back to all Cocktails', cocktails_path %></h2>
+   <div class="col-xs-4">
+      <h2>Add a new Ingredient</h2>
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <%= f.input :description %>
+        <%= f.association :ingredient %>
+        <div>
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
