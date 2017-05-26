@@ -37,7 +37,7 @@ before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
   private
 
   def set_cocktail
-    @restaurant = Restaurant.find(params[:id])
+    @cocktail = Cocktail.find(params[:id])
   end
 
   def cocktail_params
